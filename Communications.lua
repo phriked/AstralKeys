@@ -5,8 +5,8 @@ local BNSendGameData, SendAddonMessage, SendChatMessage = BNSendGameData, C_Chat
 
 -- Variables for syncing information
 -- Will only accept information from other clients with same version settings
-local SYNC_VERSION = 'sync5'
-e.UPDATE_VERSION = 'updateV8'
+local SYNC_VERSION = 'sync6'
+e.UPDATE_VERSION = 'updateV9'
 
 local versionList = {}
 local highestSubVersion, highestMajorVersion = 0, 0
@@ -398,3 +398,16 @@ local function ParseRaidChatCommands(text)
 end
 AstralEvents:Register('CHAT_MSG_RAID', ParseRaidChatCommands, 'parseraidchat')
 AstralEvents:Register('CHAT_MSG_RAID_LEADER', ParseRaidChatCommands, 'parseraidchat')
+
+local msgSent = false
+local function SendDeprecatedMessage()
+	if msgSent then 
+		AstralEvents:Unregister('PLAYER_ENTERING_WORLD', 'sendDepMsg')
+	end
+	C_Timer.After(10, function()
+		local msg = 'AstralKeys is now |cFFFF0000deprecated|r. Continued development and updated versions will be released as nKeys. You can find nKeys on Curse at https://www.curseforge.com/wow/addons/nkeys or GitHub at https://github.com/phriked/nKeys'
+		print(msg)
+	end)	
+end
+
+AstralEvents:Register('PLAYER_ENTERING_WORLD', SendDeprecatedMessage, 'sendDepMsg')

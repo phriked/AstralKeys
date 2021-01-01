@@ -1651,7 +1651,7 @@ local function InitializeFrame()
 	end
 	UpdateTabs()
 
-	guildVersionString:SetFormattedText('Astral - Turalyon (US) %s', e.CLIENT_VERSION)
+	guildVersionString:SetFormattedText('Final version - |cFFFF0000deprecated|r')
 
 	if AstralKeysSettings.frame.isCollapsed.isEnabled then
 		collapseButton:SetNormalTexture('Interface\\AddOns\\AstralKeys\\Media\\Texture\\baseline-first_page-24px@2x')
