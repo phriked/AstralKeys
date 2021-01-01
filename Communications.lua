@@ -407,7 +407,8 @@ local function SendDeprecatedMessage()
 	C_Timer.After(10, function()
 		local msg = 'AstralKeys is now |cFFFF0000deprecated|r. Continued development and updated versions will be released as nKeys. You can find nKeys on Curse at https://www.curseforge.com/wow/addons/nkeys or GitHub at https://github.com/phriked/nKeys'
 		print(msg)
-	end)	
+	end)
+	msgSent = true
 end
 
 AstralEvents:Register('PLAYER_ENTERING_WORLD', SendDeprecatedMessage, 'sendDepMsg')
