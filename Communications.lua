@@ -401,7 +401,7 @@ AstralEvents:Register('CHAT_MSG_RAID_LEADER', ParseRaidChatCommands, 'parseraidc
 
 local msgSent = false
 local function SendDeprecatedMessage()
-	if msgSent then 
+	if msgSent then
 		AstralEvents:Unregister('PLAYER_ENTERING_WORLD', 'sendDepMsg')
 	end
 	C_Timer.After(10, function()
